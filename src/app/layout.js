@@ -1,5 +1,12 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/context/authContext";
+import Navbar from "./_components/Navbar";
+import { Toaster } from "react-hot-toast";
+import GlobalPlayer from "./_components/globalPlayer";
+import { PlayerProvider } from "@/hooks/usePlayer";
+import { PlaylistProvider } from "@/context/playlistProvider";
+import { RecommendationsProvider } from "@/context/recommendationContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +29,20 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <PlayerProvider>
+        <PlaylistProvider>
+        <RecommendationsProvider>
+        <AuthProvider>
+        <Navbar />
+        <Toaster />
         {children}
+
+        <GlobalPlayer />
+        
+        </AuthProvider>
+        </RecommendationsProvider>
+        </PlaylistProvider>
+        </PlayerProvider>
       </body>
     </html>
   );
