@@ -9,6 +9,8 @@ import {
   TicketPlus,
   X as XIcon,
   CircleUserRound,
+  SearchXIcon,
+  SearchSlash,
 } from "lucide-react";
 
 import AuthContext from "@/context/authContext";
@@ -79,6 +81,13 @@ export default function Navbar() {
         {pathname !== "/search" && (
           <Link href="/search">
             <SearchIcon className="max-md:hidden w-6 h-6 cursor-pointer" />
+          </Link>
+        )}
+
+        {pathname !== "/search" && (
+          <Link href="/search_lite">
+            <SearchSlash className="max-md:hidden w-6 h-6 cursor-pointer" />
+            <p>Lite</p>
           </Link>
         )}
 
